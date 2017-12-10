@@ -15,8 +15,8 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (nick.equals("tomek") && password.equals("123")) {
-            Cookie authorCookie = new Cookie("nick", nick);
-            authorCookie.setMaxAge(60);
+            Cookie authorCookie = new Cookie("userid", "1");
+            authorCookie.setMaxAge(10 * 60);
             resp.addCookie(authorCookie);
 
             resp.sendRedirect("/index.jsp");
