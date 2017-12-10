@@ -54,7 +54,7 @@
         out.println("<th width=\"150px\">author</th>");
         out.println("<th width=\"150px\">message</th>");
         out.println("<th width=\"150px\">timestamp</th>");
-        out.println("<th width=\"150px\">akcje</th>");
+        out.println("<th width=\"150px\">actions</th>");
 
         TweetDAO tweetDAO = new TweetDAO();
 
