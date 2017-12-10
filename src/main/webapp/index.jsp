@@ -42,6 +42,8 @@
 
     if (isUserLoggedIn) {
         out.println("Logged in as: " + nick);
+        out.println();
+        out.println("<a href=\"/add.jsp\">add tweet</a>");
     } else {
         out.println("Not logged in. <a href=\"/login.jsp\">Please log in clicking here</a>");
     }
