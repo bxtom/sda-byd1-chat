@@ -1,11 +1,12 @@
-<%@ page import="com.sdatwitter.service.MyTwitterService" %>
-<%@ page import="com.sdatwitter.model.MyTweet" %>
-<%@ page import="com.sdatwitter.Database.DatabaseDAO" %>
+<%@ page import="com.tomek.sdachat.model.User" %>
+<%@ page import="com.tomek.sdachat.model.Tweet" %>
+<%@ page import="org.hibernate.SessionFactory" %>
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="org.hibernate.Session" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <body>
-<%! MyTwitterService service =  MyTwitterService.getInstance(); %>
 
 <h2>List of tweets</h2>
 
@@ -19,14 +20,15 @@
 
 <%
 
-    //for (MyTweet tweet : service.getTweetList()){
-    for (MyTweet tweet : DatabaseDAO.getTweetList()){
-        out.println("<tr>");
-        out.println("<td>" + tweet.getAuthor() + "</td>");
-        out.println("<td>" + tweet.getTweet() + "</td>");
-        out.println("<td>" + tweet.getTimestamp() + "</td>");
-        out.println("</tr>");
-    }
+    User user = new User("tomek", "123");
+    //Tweet tweet = new Tweet(1, 1, System.currentTimeMillis(), "Test");
+
+    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    Session session1 = sessionFactory.openSession();
+    session1.beginTransaction();
+    session1.save(user);
+    session1.getTransaction().commit();
+    session1.close();
 
 %>
 
