@@ -10,29 +10,45 @@
 
 <h2>List of tweets</h2>
 
-<a href="publish.jsp">publish new tweet</a><br><br>
+<br><br>
 
-<table border="1">
-
-    <th width="150px">author</th>
-    <th width="150px">message</th>
-    <th width="150px">timestamp</th>
 
 <%
 
-    User user = new User("tomek", "123");
-    //Tweet tweet = new Tweet(1, 1, System.currentTimeMillis(), "Test");
+//    User user = new User("tomek", "123");
+//    Tweet tweet = new Tweet(System.currentTimeMillis(), "Test", user);
+//
+//    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//    Session session1 = sessionFactory.openSession();
+//    session1.beginTransaction();
+//    session1.save(user);
+//    session1.save(tweet);
+//    session1.getTransaction().commit();
+//    session1.close();
 
-    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-    Session session1 = sessionFactory.openSession();
-    session1.beginTransaction();
-    session1.save(user);
-    session1.getTransaction().commit();
-    session1.close();
+
+    String nick = "";
+    Boolean isUserLoggedIn = false;
+
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("nick")) {
+                isUserLoggedIn = true;
+                nick = cookie.getValue();
+            }
+        }
+    }
+
+    if (isUserLoggedIn) {
+        out.println("Logged in as: " + nick);
+    } else {
+        out.println("Not logged in. <a href=\"/login.jsp\">Please log in clicking here</a>");
+    }
+
 
 %>
 
-</table>
 
 </body>
 </html>
