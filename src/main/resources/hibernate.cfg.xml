@@ -12,7 +12,7 @@
         <property name="hibernate.connection.password">12345</property>
         <property name="hibernate.connection.useSSL">false</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.tomek.sdachat.model.User"/>
         <mapping class="com.tomek.sdachat.model.Tweet"/>
