@@ -16,16 +16,19 @@
 
 <%
 
-    User user = new User("tomek", "123");
-    Tweet sampleTweet = new Tweet(System.currentTimeMillis(), "Test", user);
-
-    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-    Session session1 = sessionFactory.openSession();
-    session1.beginTransaction();
-    session1.save(user);
-    session1.save(sampleTweet);
-    session1.getTransaction().commit();
-    session1.close();
+//    User user = new User("tomek", "123");
+//    Tweet sampleTweet = new Tweet(System.currentTimeMillis(), "Test", user);
+//
+//    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//    Session session1 = sessionFactory.openSession();
+//    session1.beginTransaction();
+//    session1.save(user);
+//    session1.save(sampleTweet);
+//    session1.getTransaction().commit();
+//    session1.close();
+//
+//    TweetDAO sampleTweetDAO = new TweetDAO();
+//    sampleTweetDAO.createTweet(new Tweet(System.currentTimeMillis(), "TEEST TEEST TEEST ", user));
 
 
     String userId = "";
@@ -51,6 +54,7 @@
         out.println("<th width=\"150px\">author</th>");
         out.println("<th width=\"150px\">message</th>");
         out.println("<th width=\"150px\">timestamp</th>");
+        out.println("<th width=\"150px\">akcje</th>");
 
         TweetDAO tweetDAO = new TweetDAO();
 
@@ -59,6 +63,8 @@
             out.println("<td>" + tweet.getUser().getNick() + "</td>");
             out.println("<td>" + tweet.getMessage() + "</td>");
             out.println("<td>" + tweet.getTimestamp() + "</td>");
+            out.println("<td><a href=\"update.jsp\">update</a> <a href=\"tweetServlet?delete=" +
+                    tweet.getId() + "\">delete</a></td>");
             out.println("</tr>");
         }
 
