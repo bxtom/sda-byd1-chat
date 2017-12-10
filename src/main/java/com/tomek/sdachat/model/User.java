@@ -27,6 +27,11 @@ public class User {
     private String nick;
     @Column
     private String password;
-    @OneToMany(mappedBy="users", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="User", cascade = CascadeType.ALL)
     private List<Tweet> tweetsList = new ArrayList<Tweet>();
+
+    public User(String nick, String password) {
+        this.nick = nick;
+        this.password = password;
+    }
 }
