@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h2>Log in</h2>
+<h2>New tweet</h2>
 
 <%
 
