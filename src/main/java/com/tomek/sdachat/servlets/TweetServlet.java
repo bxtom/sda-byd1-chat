@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet(name = "tweetServlet", value = "/tweetServlet")
 public class TweetServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String message = req.getParameter("message");
 
         UserDAO userDAO = new UserDAO();
@@ -35,6 +35,23 @@ public class TweetServlet extends HttpServlet {
         if (loggedUser != null) {
             TweetDAO tweetDAO = new TweetDAO();
             tweetDAO.createTweet(new Tweet(System.currentTimeMillis(), message, loggedUser));
+
+            resp.sendRedirect("index.jsp");
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String tweetId = req.getParameter("delete");
+
+        if (tweetId != null && !tweetId.equals("")) {
+            TweetDAO tweetDAO = new TweetDAO();
+
+            Tweet selectedTweet = tweetDAO.readTweet(Integer.parseInt(tweetId));
+
+            tweetDAO.deleteTweet(selectedTweet);
+
+            resp.sendRedirect("index.jsp");
         }
     }
 }
