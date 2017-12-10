@@ -25,7 +25,7 @@ public class Tweet {
     private int id;
     private long timestamp;
     private String message;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
 
     public Tweet(long timestamp, String message, User user) {
