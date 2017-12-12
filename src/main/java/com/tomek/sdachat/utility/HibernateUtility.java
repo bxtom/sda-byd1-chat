@@ -15,7 +15,7 @@ public class HibernateUtility {
         if (session == null) {
             session = (Session) new HibernateUtility();
         }
+
         return session;
     }
-
 }
