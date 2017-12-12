@@ -16,8 +16,9 @@
 %>
 
 <form action="/AddTweetServlet" method="post">
-    Message:<br>
-    <textarea name="message"></textarea> <br><br>
+    <label>Message:<br>
+        <textarea name="message"></textarea>
+    </label> <br><br>
     <input type="submit" value="Submit">
 </form>
 
