@@ -1,6 +1,7 @@
 package com.tomek.sdachat.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "tweets")
 public class Tweet {
@@ -27,10 +29,4 @@ public class Tweet {
     private String message;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
-
-    public Tweet(long timestamp, String message, User user) {
-        this.timestamp = timestamp;
-        this.message = message;
-        this.user = user;
-    }
 }
