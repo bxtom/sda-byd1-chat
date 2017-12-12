@@ -1,3 +1,4 @@
+<%@ page import="com.tomek.sdachat.utility.UserSessionUtility" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
@@ -9,22 +10,12 @@
 <h2>New tweet</h2>
 
 <%
+    UserSessionUtility userSession = new UserSessionUtility(request, response);
 
-    Boolean isUserLoggedIn = false;
-
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("userid")) {
-                isUserLoggedIn = true;
-            }
-        }
-    }
-
-    if (isUserLoggedIn) {
+    if (userSession.isUserLoggedIn()) {
 %>
 
-<form action="/tweetServlet" method="post">
+<form action="/AddTweetServlet" method="post">
     Message:<br>
     <textarea name="message"></textarea> <br><br>
     <input type="submit" value="Submit">
@@ -33,7 +24,7 @@
 <%
 
     } else {
-        out.println("Not logged in. <a href=\"/login.jsp\">Please log in clicking here</a><br><br>");
+        out.println("Not logged in. <a href=\"/login.jsp\">Please log in by clicking here</a><br><br>");
     }
 
 %>
