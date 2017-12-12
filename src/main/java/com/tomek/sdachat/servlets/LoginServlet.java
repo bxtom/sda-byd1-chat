@@ -1,27 +1,27 @@
 package com.tomek.sdachat.servlets;
 
+import com.tomek.sdachat.model.User;
+import com.tomek.sdachat.utility.UserSessionUtility;
+
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "loginServlet", value = "/loginServlet")
+@WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String nick = req.getParameter("nick");
-        String password = req.getParameter("password");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String nick = request.getParameter("nick");
+        String password = request.getParameter("password");
 
         if (nick.equals("tomek") && password.equals("123")) {
-            Cookie authorCookie = new Cookie("userid", "1");
-            authorCookie.setMaxAge(10 * 60);
-            resp.addCookie(authorCookie);
-
-            resp.sendRedirect("/index.jsp");
+            UserSessionUtility userSession = new UserSessionUtility(request, response);
+            userSession.login(User.builder().id(1).nick("Tomek").build());
+            response.sendRedirect("/index.jsp");
         } else {
-            resp.sendRedirect("/login.jsp?error=1");
+            response.sendRedirect("/login.jsp?error=1");
         }
     }
 }
