@@ -8,9 +8,9 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class TweetDAO {
-    private Session session = HibernateUtility.getHibernateSession();
+    public void addTweet(Tweet tweet) {
+        Session session = HibernateUtility.getHibernateSession();
 
-    public void createTweet(Tweet tweet) {
         try {
             session.beginTransaction();
             session.save(tweet);
@@ -19,11 +19,13 @@ public class TweetDAO {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
+
             e.printStackTrace();
         }
     }
 
-    public Tweet readTweet(int id) {
+    public Tweet getTweet(int id) {
+        Session session = HibernateUtility.getHibernateSession();
         Tweet result = null;
 
         try {
@@ -34,12 +36,15 @@ public class TweetDAO {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
+
             e.printStackTrace();
         }
         return result;
     }
 
     public void updateTweet(Tweet tweet) {
+        Session session = HibernateUtility.getHibernateSession();
+
         try {
             session.beginTransaction();
             session.update(tweet);
@@ -48,11 +53,14 @@ public class TweetDAO {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
+
             e.printStackTrace();
         }
     }
 
     public void deleteTweet(Tweet tweet) {
+        Session session = HibernateUtility.getHibernateSession();
+
         try {
             session.beginTransaction();
             session.remove(tweet);
@@ -61,12 +69,14 @@ public class TweetDAO {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
+
             e.printStackTrace();
         }
     }
 
-    public List<Tweet> getTweetList() {
-        List<Tweet> tweets = null;
+    public List<Tweet> getAllTweets() {
+        Session session = HibernateUtility.getHibernateSession();
+        List tweets = null;
 
         try {
             session.beginTransaction();
@@ -76,6 +86,7 @@ public class TweetDAO {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
+
             e.printStackTrace();
         }
 
