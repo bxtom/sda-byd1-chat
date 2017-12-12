@@ -1,6 +1,7 @@
 package com.tomek.sdachat.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -27,9 +29,4 @@ public class User {
     private String password;
     //@OneToMany(mappedBy="User", cascade = CascadeType.ALL)
     //private List<Tweet> tweetsList = new ArrayList<Tweet>();
-
-    public User(String nick, String password) {
-        this.nick = nick;
-        this.password = password;
-    }
 }
