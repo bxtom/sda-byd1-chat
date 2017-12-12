@@ -17,7 +17,7 @@
 
     %>
 
-    <form action="/loginServlet" method="post">
+    <form action="/LoginServlet" method="post">
 
         <label>nick:<br>
             <input name="nick">
@@ -25,7 +25,8 @@
 
         <label>password:<br>
             <input name="password">
-        </label> <br><br>
+        </label>
+        <br><br>
         <input type="submit" value="Submit">
     </form>
 
