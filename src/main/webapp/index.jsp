@@ -16,7 +16,7 @@
     if (userSession.isUserLoggedIn()) {
         out.println("Logged in as: " + userSession.getLoggedUser().getNick());
         out.println("<br><br>");
-        out.println("<a href=\"/add.jsp\">add tweet</a>");
+        out.println("<a href=\"/create.jsp\">create tweet</a>");
         out.println("<br><br>");
 
         out.println("<table border=\"1\">");
@@ -27,7 +27,7 @@
 
         TweetDAO tweetDAO = new TweetDAO();
 
-        for (Tweet tweet : tweetDAO.getAllTweets()) {
+        for (Tweet tweet : tweetDAO.getAll()) {
             out.println("<tr>");
             out.println("<td>" + tweet.getUser().getNick() + "</td>");
             out.println("<td>" + tweet.getMessage() + "</td>");

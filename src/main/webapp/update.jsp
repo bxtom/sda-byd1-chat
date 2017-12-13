@@ -17,7 +17,7 @@
     if (userSession.isUserLoggedIn()) {
         String tweetId = request.getParameter("id");
         TweetDAO tweetDAO = new TweetDAO();
-        Tweet tweetToUpdate = tweetDAO.getTweet(Integer.parseInt(tweetId));
+        Tweet tweetToUpdate = tweetDAO.read(Integer.parseInt(tweetId));
 
 %>
 <form action="/UpdateTweetServlet" method="post">
