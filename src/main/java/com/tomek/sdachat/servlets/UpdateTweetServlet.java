@@ -21,9 +21,9 @@ public class UpdateTweetServlet extends HttpServlet {
             String tweetId = request.getParameter("id");
 
             TweetDAO tweetDAO = new TweetDAO();
-            Tweet tweet = tweetDAO.getTweet(Integer.parseInt(tweetId));
+            Tweet tweet = tweetDAO.read(Integer.parseInt(tweetId));
             tweet.setMessage(message);
-            tweetDAO.updateTweet(tweet);
+            tweetDAO.update(tweet);
 
             response.sendRedirect("index.jsp");
         }

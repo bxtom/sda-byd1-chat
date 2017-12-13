@@ -17,8 +17,8 @@ public class DeleteTweetServlet extends HttpServlet {
 
         if (tweetId != null && !tweetId.equals("")) {
             TweetDAO tweetDAO = new TweetDAO();
-            Tweet selectedTweet = tweetDAO.getTweet(Integer.parseInt(tweetId));
-            tweetDAO.deleteTweet(selectedTweet);
+            Tweet selectedTweet = tweetDAO.read(Integer.parseInt(tweetId));
+            tweetDAO.delete(selectedTweet);
             resp.sendRedirect("index.jsp");
         }
     }

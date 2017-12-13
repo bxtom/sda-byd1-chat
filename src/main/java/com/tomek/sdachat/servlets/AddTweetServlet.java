@@ -26,7 +26,7 @@ public class AddTweetServlet extends HttpServlet {
                     .user(session.getLoggedUser())
                     .build();
 
-            tweetDAO.addTweet(tweet);
+            tweetDAO.create(tweet);
             response.sendRedirect("index.jsp");
         }
     }
