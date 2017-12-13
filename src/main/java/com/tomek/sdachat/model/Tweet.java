@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "tweets")
-public class Tweet {
+public class Tweet implements ModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column

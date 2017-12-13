@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements ModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -27,6 +27,4 @@ public class User {
     private String nick;
     @Column
     private String password;
-    //@OneToMany(mappedBy="User", cascade = CascadeType.ALL)
-    //private List<Tweet> tweetsList = new ArrayList<Tweet>();
 }
