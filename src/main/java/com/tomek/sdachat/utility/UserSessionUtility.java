@@ -26,7 +26,7 @@ public class UserSessionUtility {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(USER_ID)) {
                     UserDAO userDAO = new UserDAO();
-                    loggedUser = userDAO.getUser(Integer.parseInt(cookie.getValue()));
+                    loggedUser = userDAO.read(Integer.parseInt(cookie.getValue()));
                 }
             }
         }
