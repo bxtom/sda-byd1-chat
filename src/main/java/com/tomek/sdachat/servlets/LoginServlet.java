@@ -1,5 +1,6 @@
 package com.tomek.sdachat.servlets;
 
+import com.tomek.sdachat.dao.UserDAO;
 import com.tomek.sdachat.model.User;
 import com.tomek.sdachat.utility.UserSessionUtility;
 
@@ -16,9 +17,12 @@ public class LoginServlet extends HttpServlet {
         String nick = request.getParameter("nick");
         String password = request.getParameter("password");
 
-        if (nick.equals("tomek") && password.equals("123")) {
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getOneUser(nick, password);
+
+        if (user != null) {
             UserSessionUtility userSession = new UserSessionUtility(request, response);
-            userSession.login(User.builder().id(1).nick("Tomek").build());
+            userSession.login(user);
             response.sendRedirect("/index.jsp");
         } else {
             response.sendRedirect("/login.jsp?error=1");
