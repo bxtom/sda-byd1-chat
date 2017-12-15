@@ -1,38 +1,41 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <head>
-    <title>Log in</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="my.css">
+    <title>Tweets - log in</title>
 </head>
 <body>
 
-    <h2>Log in</h2>
+<div class="container">
+    <div class="row">
+        <div class="one-half column" style="margin-top: 25px">
+            <h4>Log in</h4>
 
-    <%
+            <%
+                String error = request.getParameter("error");
+                if (error != null && error.equals("1")) {
+                    out.println("<span class=\"error\">Wrong login and/or password!</span>" + "<br><br>");
+                }
 
-        String error = request.getParameter("error");
-        if (error != null && error.equals("1")) {
-            out.println("Wrong login and/or password!" + "<br><br>");
-        }
+                String info = request.getParameter("info");
+                if (info != null && info.equals("signupok")) {
+                    out.println("<span class=\"info\">Account created! Please log in</span>" + "<br><br>");
+                }
+            %>
 
-    %>
-
-    <form action="/LoginServlet" method="post">
-
-        <label>nick:<br>
-            <input name="nick">
-        </label> <br>
-
-        <label>password:<br>
-            <input name="password">
-        </label>
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
-
-    <br>
-
-    <a href="/index.jsp">back to the home page</a><br><br>
+            <form action="/LoginServlet" method="post">
+                <label for="nick">nick:</label>
+                <input id="nick" name="nick" type="text">
+                <label for="password">password:</label>
+                <input id="password" name="password" type="password"><br>
+                <input class="button-primary" type="submit" value="Log in">
+            </form>
+            New to Tweets? <a href="signup.jsp">Sign up</a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
