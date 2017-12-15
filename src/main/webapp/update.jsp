@@ -31,7 +31,7 @@
                 <textarea id="message" name="message" style="width: 100%; height: 150px"><%
                     out.print(tweetToUpdate.getMessage());
                 %></textarea>
-                <input class="button-primary" type="submit" value="Submit">
+                <input class="button-primary" type="submit" value="Update">
             </form>
 
             <%

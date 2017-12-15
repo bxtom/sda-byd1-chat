@@ -23,7 +23,7 @@
             <form action="/AddTweetServlet" method="post">
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" style="width: 100%; height: 150px"></textarea>
-                <input class="button-primary" type="submit" value="Submit">
+                <input class="button-primary" type="submit" value="Publish">
             </form>
 
             <%
