@@ -4,9 +4,9 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="skeleton.css">
-    <link rel="stylesheet" href="my.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/skeleton.css">
+    <link rel="stylesheet" href="assets/css/my.css">
     <title>Tweets - update tweet</title>
 </head>
 <body>
