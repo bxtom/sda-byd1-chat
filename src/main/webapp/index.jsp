@@ -3,12 +3,12 @@
 <%@ page import="com.tomek.sdachat.model.User" %>
 <%@ page import="com.tomek.sdachat.utility.UserSessionUtility" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
 <head>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="skeleton.css">
     <link rel="stylesheet" href="my.css">
+    <title>Tweets</title>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="one-half column" style="margin-top: 25px">
-            <h4>Tweets <% if (loggedUser != null) out.print("@" + loggedUser.getNick()); %></h4>
+            <h4>Tweets</h4>
 
             <%
 
@@ -45,7 +45,7 @@
 
                 for (Tweet tweet : tweetDAO.getAllTweetsNewestFirst()) {
                     out.println("<p>");
-                    out.println("<a href=\"user.jsp?nick=" +
+                    out.println("<a href=\"profile.jsp?nick=" +
                             tweet.getUser().getNick() + "\">@" +
                             tweet.getUser().getNick() + "</a> ");
                     out.print("<span title=\"" + tweet.getDetailedTime() + "\">" + tweet.getPrettyTime() + "</span>");
