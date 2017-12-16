@@ -32,7 +32,8 @@
                 <input id="password" name="password" type="password"><br>
                 <input class="button-primary" type="submit" value="Log in">
             </form>
-            New to Tweets? <a href="signup.jsp">Sign up</a>
+            New to Tweets? <a href="signup.jsp">Sign up</a><br><br>
+            <a href="passwdreset.jsp">Forgot password?</a>
         </div>
     </div>
 </div>

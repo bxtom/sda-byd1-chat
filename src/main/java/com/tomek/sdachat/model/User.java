@@ -30,4 +30,6 @@ public class User implements ModelEntity {
     private String nick;
     @Column
     private String password;
+    @Column
+    private String uuid;
 }

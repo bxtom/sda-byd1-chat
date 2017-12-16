@@ -65,6 +65,32 @@ public class UserDAO extends GenericDAO<User> {
         return user;
     }
 
+    public User findOneUserByUuid(String uuid) {
+        Session session = HibernateUtility.getHibernateSession();
+        User user = null;
+
+        try {
+            session.beginTransaction();
+
+            String hql = "from User u where u.uuid = :uuid";
+            List users = session.createQuery(hql)
+                    .setParameter("uuid", uuid)
+                    .list();
+
+            if (users.size() > 0)
+                user = (User) users.get(0);
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public Boolean isNickTaken(String nick) {
         Session session = HibernateUtility.getHibernateSession();
         Boolean result = false;
