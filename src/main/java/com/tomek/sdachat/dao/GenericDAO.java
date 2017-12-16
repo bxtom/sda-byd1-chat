@@ -26,7 +26,7 @@ public abstract class GenericDAO<T extends ModelEntity> {
         }
     }
 
-    public T read(int id) {
+    public T read(Integer id) {
         Session session = HibernateUtility.getHibernateSession();
         T entity = null;
 
