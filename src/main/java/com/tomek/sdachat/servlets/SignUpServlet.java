@@ -1,5 +1,6 @@
 package com.tomek.sdachat.servlets;
 
+import com.google.common.hash.Hashing;
 import com.tomek.sdachat.dao.UserDAO;
 import com.tomek.sdachat.model.User;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(name = "SignUpServlet", value = "/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
@@ -24,7 +26,11 @@ public class SignUpServlet extends HttpServlet {
         } else if (password1.equals("") || password2.equals("") || (!password1.equals(password2))) {
             response.sendRedirect("/signup.jsp?error=password");
         } else {
-            userDAO.create(User.builder().nick(nick).password(password1).build());
+            final String hash = Hashing.sha256()
+                    .hashString(password1 + User.SALT, StandardCharsets.UTF_8)
+                    .toString();
+
+            userDAO.create(User.builder().nick(nick).password(hash).build());
             response.sendRedirect("/login.jsp?info=signupok");
         }
     }

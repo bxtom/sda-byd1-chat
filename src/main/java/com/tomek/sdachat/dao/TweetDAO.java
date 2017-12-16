@@ -32,7 +32,7 @@ public class TweetDAO extends GenericDAO<Tweet> {
         return tweets;
     }
 
-    public List<Tweet> getAllTweetsOfOneUserNewestFirst(User user) {
+    public List<Tweet> getAllTweetsOfOneUserNewestFirst(final User user) {
         Session session = HibernateUtility.getHibernateSession();
         List tweets = null;
 
